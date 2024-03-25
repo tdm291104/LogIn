@@ -16,7 +16,9 @@
                 <span>or use your email for registeration</span>
                 <input type="text" placeholder="Name" id="registerName">
                 <input type="email" placeholder="Email" id="registerEmail">
-                <input type="password" placeholder="Password" id="registerPassword">
+                <input type="tel" placeholder="Phone" id="registerPhone">
+                <input type="password" placeholder="Password" id="registerPassword" required>
+                <input type="password" placeholder="Password repeat" id="registerPasswordrepeat" required>
                 <button type="button" onclick="register()">Sign Up</button>
             </form>
         </div>       
@@ -27,7 +29,8 @@
                 </div>
                 <span>or use your email password</span>
                 <input type="email" placeholder="Email" id="loginEmail">
-                <input type="text" placeholder="Password" id="loginPassword">
+                <input type="password" placeholder="Password" id="loginPassword"> 
+                <!-- simple_password -->
                 <a href="#">Forget Your Password?</a>
                 <button type="button" onclick="login()" id="buttonlogin">Sign In</button>
             </form>

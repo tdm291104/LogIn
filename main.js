@@ -51,6 +51,7 @@ function login(){
 function logout() {
   localStorage.removeItem('access_token');
   updateButtonUI(false);
+  alert("Đăng xuất thành công");
 }
 
 function updateButtonUI(x) {
@@ -79,6 +80,8 @@ const registerApi = "https://api.storerestapi.com/auth/register"
 const registerName =  document.getElementById("registerName")
 const registerEmail = document.getElementById("registerEmail")
 const registerPassword = document.getElementById("registerPassword")
+const registerPhone = document.getElementById("registerPhone")
+const registerPasswordrepeat = document.getElementById("registerPasswordrepeat")
 
 function register(){
   fetch(registerApi, {
@@ -86,9 +89,9 @@ function register(){
     body: JSON.stringify({
       name: registerName.value.trim(),
       email: registerEmail.value.trim(),
-      number: 123456,
+      number: registerPhone.value.trim(),
       password: registerPassword.value.trim(),
-      password_repeat: registerPassword.value.trim()
+      password_repeat: registerPasswordrepeat.value.trim()
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -97,11 +100,18 @@ function register(){
     .then((response) => response.json())
     .then((res) => {
       if (res.status == 201) {
-        alert("Đăng ký thành công");
-        console.log(res);
-        registerName.value = ""
-        registerEmail.value = ""
-        registerPassword.value = ""
+        if(registerPasswordrepeat.value === registerPassword.value){
+          alert("Đăng ký thành công");
+          console.log(res);
+          registerName.value = ""
+          registerEmail.value = ""
+          registerPassword.value = ""
+          registerPasswordrepeat.value = ""
+          registerPhone.value = ""
+        }else{
+          alert("Mật khẩu không trùng khớp");
+          console.log(res);
+        }
       }
       else{
         alert("Đăng ký thất bại");
