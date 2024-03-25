@@ -19,8 +19,8 @@ function login(){
   fetch(loginApi, {
     method: "POST",
     body: JSON.stringify({
-      email: loginEmail.value.trim(),
-      password: loginPassword.value.trim(),
+      email: email.value.trim(),
+      password: password.value.trim(),
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -33,6 +33,10 @@ function login(){
         alert("Đăng nhập thành công");
         console.log(res);
         updateButtonUI(true);
+      }
+      else if(email.value === ""|| password.value === ""){
+        alert("Không được để trống");
+        console.log(res);
       }
       else{
         alert("Đăng nhập thất bại");
@@ -112,6 +116,10 @@ function register(){
           alert("Mật khẩu không trùng khớp");
           console.log(res);
         }
+      }
+      else if(registerName.value === "" || registerEmail.value === ""|| registerPassword.value === "" || registerPasswordrepeat.value === "" || registerPhone.value === ""){
+        alert("Không được để trống");
+        console.log(res);
       }
       else{
         alert("Đăng ký thất bại");
